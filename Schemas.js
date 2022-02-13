@@ -31,10 +31,14 @@ const MattressSchema = new Schema({
     side1: [MattressLayerSchema],
     side2: [MattressLayerSchema],
     base: MattressBaseSchema,
-    aerator: Boolean,
-    edgingTape: Boolean,
-    arms: Boolean,
-    reinforcementWithPressedFelt: Boolean
+});
+
+const CatalogMattressSchema = new Schema({
+    name: String,
+    cloth: String,
+    height: Number,
+    load: Number,
+    price: Number
 });
 
 const UserSchema = new Schema({
@@ -60,6 +64,7 @@ module.exports = {
     MattressLayerSchema,
     MattressBaseSchema,
     MattressSchema,
+    CatalogMattressSchema,
     UserSchema,
     OrderSchema
 }

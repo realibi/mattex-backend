@@ -20,6 +20,15 @@ usersRouter.get("/:id", function(req, res){
     });
 });
 
+usersRouter.get("/:id/coefficient", function(req, res){
+    const id = req.params.id;
+    models.User.findOne({_id: id}, function(err, result){
+
+        if(err) return console.log(err);
+        res.json(result.coefficient);
+    });
+});
+
 usersRouter.post("/", jsonParser, function (req, res) {
     if(!req.body) return res.sendStatus(400);
 
@@ -52,6 +61,20 @@ usersRouter.post("/login", jsonParser, function (req, res) {
         }
 
 
+    });
+});
+
+usersRouter.put("/", jsonParser, function (req, res) {
+    if(!req.body) return res.sendStatus(400);
+
+    const id = req.body.id;
+    const coefficient = req.body.coefficient;
+
+    const newUser = {coefficient};
+
+    models.User.findOneAndUpdate({_id: id}, newUser, {new: true}, function(err, result){
+        if(err) return console.log(err);
+        res.send(result);
     });
 });
 
