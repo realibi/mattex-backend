@@ -3,6 +3,7 @@ const express = require("express");
 const mattressRouter = require("./routers/mattress/MattressesRouter");
 const usersRouter = require("./routers/user/UsersRouter");
 const ordersRouter = require("./routers/order/OrdersRouter");
+const fileRouter = require("./routers/file/FileRouter");
 const cors = require('cors');
 const app = express();
 
@@ -25,3 +26,4 @@ mongoose.connect("mongodb://localhost:27017/mattexdb",
 app.use("/api/mattresses", mattressRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/orders", ordersRouter);
+app.use("/api/file", fileRouter);

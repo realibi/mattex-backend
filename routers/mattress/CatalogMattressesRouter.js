@@ -28,8 +28,12 @@ catalogMattresses.post("/", jsonParser, function (req, res) {
     const height = req.body.height;
     const load = req.body.load;
     const price = req.body.price;
+    const image = req.body.image;
+    const sizes = req.body.sizes;
+    const rigidity = req.body.rigidity;
+    const description = req.body.description;
 
-    const newCatalogMattress = new models.CatalogMattress({name, cloth, height, load, price});
+    const newCatalogMattress = new models.CatalogMattress({name, cloth, height, load, price, image, sizes, rigidity, description});
 
     newCatalogMattress.save(function(err){
         if(err) return console.log(err);

@@ -11,10 +11,11 @@ ordersRouter.get("/", function(req, res){
     });
 });
 
-ordersRouter.get("/user/:id", function(req, res){
+ordersRouter.get("/user/:id", async function(req, res){
     const id = req.params.id;
+    let user = await models.User.findById(id);
 
-    models.Order.find({user: id}, function(err, results){
+    models.Order.find({user: user}, function(err, results){
         if(err) return console.log(err);
         res.send(results)
     });
@@ -41,15 +42,16 @@ ordersRouter.get("/:id", function(req, res){
 ordersRouter.post("/", jsonParser, function (req, res) {
     if(!req.body) return res.sendStatus(400);
 
-    console.log(req.body);
-
     const phone = req.body.password;
     const mattress = req.body.mattress;
+    const catalogMattress = req.body.catalogMattress;
     const user = req.body.user;
     const totalSum = req.body.totalSum;
+    const size = req.body.size;
+    const price = req.body.price;
     const date = new Date();
 
-    const order = new models.Order({phone, mattress, user, totalSum, date});
+    const order = new models.Order({phone, mattress, catalogMattress, size, user, totalSum, price, date});
 
     order.save(function(err){
         if(err) return console.log(err);

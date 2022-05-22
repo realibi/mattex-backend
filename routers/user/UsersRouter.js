@@ -59,8 +59,6 @@ usersRouter.post("/login", jsonParser, function (req, res) {
         }else{
             res.send(false);
         }
-
-
     });
 });
 

@@ -23,6 +23,11 @@ const MattressBaseSchema = new Schema({
     imgSrc: String
 });
 
+const SizeSchema = new Schema({
+    width: Number,
+    price: Number
+});
+
 const MattressSchema = new Schema({
     measurerRequired: Boolean,
     form: String,
@@ -38,7 +43,11 @@ const CatalogMattressSchema = new Schema({
     cloth: String,
     height: Number,
     load: Number,
-    price: Number
+    price: Number,
+    image: String,
+    sizes: [SizeSchema],
+    rigidity: String,
+    description: String
 });
 
 const UserSchema = new Schema({
@@ -52,8 +61,10 @@ const UserSchema = new Schema({
 
 const OrderSchema = new Schema({
     mattress: MattressSchema,
+    catalogMattress: CatalogMattressSchema,
     user: UserSchema,
     loggedIn: Boolean,
+    size: String,
     phone: String,
     date: Date,
     totalSum: Number
@@ -66,5 +77,6 @@ module.exports = {
     MattressSchema,
     CatalogMattressSchema,
     UserSchema,
-    OrderSchema
+    OrderSchema,
+    SizeSchema
 }

@@ -3,7 +3,6 @@ const casesRouter = require("./CasesRouter");
 const basesRouter = require("./BasesRouter");
 const layersRouter = require("./LayersRouter");
 const catalogMattressRouter = require("./CatalogMattressesRouter");
-const models = require("../../Models");
 
 let mattressesRouter = express.Router();
 mattressesRouter.use("/cases", casesRouter);
