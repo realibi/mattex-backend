@@ -15,7 +15,7 @@ ordersRouter.get("/user/:id", async function(req, res){
     const id = req.params.id;
     let user = await models.User.findById(id);
 
-    models.Order.find({user: user}, function(err, results){
+    models.Order.find({"user._id": id}, function(err, results){
         if(err) return console.log(err);
         res.send(results)
     });

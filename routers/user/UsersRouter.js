@@ -76,4 +76,22 @@ usersRouter.put("/", jsonParser, function (req, res) {
     });
 });
 
+usersRouter.put("/edit", jsonParser, function (req, res) {
+    if(!req.body) return res.sendStatus(400);
+
+    const id = req.body.id;
+    const fullName = req.body.fullName;
+    const phone = req.body.phone;
+
+    let newInfo = {
+        fullName,
+        phone
+    }
+
+    models.User.findOneAndUpdate({_id: id}, newInfo, {new: true}, function(err, result){
+        if(err) return console.log(err);
+        res.send(result);
+    });
+});
+
 module.exports = usersRouter;
