@@ -11,11 +11,14 @@ app.use(cors({
     origin: '*'
 }));
 
-mongoose.connect("mongodb://localhost:27017/mattexdb",
-    {
-        useUnifiedTopology: true,
-        useNewUrlParser: true
-    },
+const CONNECTION_STRING = `mongodb+srv://realibi:intersekt01@cluster0.8rc2y.mongodb.net/?retryWrites=true&w=majority`;
+//const CONNECTION_STRING = `mongodb://localhost:27017/mattexdb`;
+
+mongoose.connect(CONNECTION_STRING,
+    // {
+    //     useUnifiedTopology: true,
+    //     useNewUrlParser: true
+    // },
     function(err){
         if(err) return console.log(err);
         app.listen(3030, function(){
