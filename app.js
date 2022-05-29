@@ -21,8 +21,9 @@ mongoose.connect(CONNECTION_STRING,
     // },
     function(err){
         if(err) return console.log(err);
-        app.listen(3030, function(){
-            console.log("Сервер ожидает подключения...");
+        const PORT = process.env.PORT || 3030;
+        app.listen(PORT, function(){
+            console.log("Сервер ожидает подключения на порту " + PORT);
         });
 });
 
